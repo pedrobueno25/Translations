@@ -92,4 +92,6 @@
 
 # Recursos do Rancher para introdução:
  Começando: <https://rancher.com/quick-start/>
- Benefícios únicos do Rancher: <https://rancher.com/what-is-rancher/what-rancher-adds-to-kubernetes/>
+ 
+ Benefícios únicos do Rancher: <https://rancher.com/what-is-rancher/what-rancher-adds-to-kubernetes/
+
