@@ -1,7 +1,7 @@
 # Guia do comprador para plataformas de gerenciamento corporativo Kubernetes
 
 # Sumário Executivo
-> De acordo com a 451 Research, 76% das empresas padronizarão o Kubernetes nos próximos 3 anos, pois promete um conjunto consistente de recursos em qualquer infraestrutura - do datacenter à nuvem e até a borda - “Kubernetes and Beyond – Effective Implementation of Cloud Native Software in the Enterprise” por Jay Lyman, Analista Principal 451 Research.
+> De acordo com a 451 Research, 76% das empresas padronizarão o Kubernetes nos próximos 3 anos, pois promete um conjunto consistente de recursos em qualquer infraestrutura - do datacenter à nuvem e até edge - “Kubernetes and Beyond – Effective Implementation of Cloud Native Software in the Enterprise” por Jay Lyman, Analista Principal 451 Research.
 
  Ao unificar suas operações de TI com o Kubernetes, as empresas obtêm benefícios importantes, como maior confiabilidade, segurança aprimorada e maior eficiência com automação padronizada.
 
@@ -33,7 +33,7 @@
 
  Ao simplificar e automatizar as operações de cluster, as Plataformas de Gerenciamento Kubernetes buscam melhorar a eficiência do DevOps.
 
- Rancher:
+ **Rancher**:
  * Facilidade de instalação, configuração e manutenção: **++++**
  * Intuitive UI: **++++**
  * Multi-cloud: **++++**
@@ -52,7 +52,7 @@
  * Airgap Support: **++++**
  * Backup e restauração do Etcd: **++++**
 
-OpenShift:
+**OpenShift**:
  * Facilidade de instalação, configuração e manutenção: **--++**
  * Intuitive UI: **++++**
  * Multi-cloud: **-+++**
@@ -71,7 +71,7 @@ OpenShift:
  * Airgap Support: **----**
  * Backup e restauração do Etcd: **--++**
 
-PKS:
+**PKS**:
  * Facilidade de instalação, configuração e manutenção: **---+**
  * Intuitive UI: **--++**
  * Multi-cloud: **-+++**
