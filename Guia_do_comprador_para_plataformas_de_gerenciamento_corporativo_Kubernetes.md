@@ -155,7 +155,7 @@ PKS:
 ### Facilidade de instalação, configuração e manutenção
  * Rancher: **++++**
  * OpenShift: **--++**
- * PKS: **---***
+ * PKS: **---+**
 
 #### Rancher
  O Rancher oferece distribuições certificadas do Kubernetes para datacenter, nuvem e edge. Cada distribuição requer o mínimo de configuração do host, geralmente não mais do que uma versão suportada do Docker. Para instalações que desejam uma superfície de ataque ainda menor, o Rancher oferece dois sistemas operacionais de contêinere projetados expressamente para executar o Kubernetes da maneira mais eficiente possível.
@@ -167,3 +167,18 @@ PKS:
 #### PKS
  O PKS requer pré-requisitos do Ops Manager, BOSH Director e PKS Manager. Se estiver usando recursos opcionais, também poderá ser necessária uma instalação de vários nós do plano de controle NSX-T e do Harbor. A instalação e configuração desses componentes levará de oito a 16 horas.
  A implantação do cluster PKS real pode levar até 30 minutos para implantar um cluster básico. As alterações na configuração do PKS também demoram 30 minutos para seremaplicadas e requerem um relançamento dos clusters a jasante.
+
+### Intuitive UI
+ * Rancher: **++++**
+ * OpenShift: **++++**
+ * PKS: **--++**
+
+#### Rancher
+ A interface do usuário orientada por intenção do Rancher permite que os usuários implantem e iniciem rapidamente o gerenciamento de clusters Kubernetes com quase nenhuma curva de aprendizado. Ele suaviza e agiliza conceitos e fluxos de trabalho complexos do Kubernetes, possibilitando o aproveitamento do Kubernetes em uma organização sem a necessidade de treinamento extensivo antecipadamente.
+
+#### OpenShift
+ A interface do usuário do OpenShift é nítida e rápida. Existem fluxos de trabalho comuns na parte superior dos menus, e o acesso aos fluxos de trabalho padrão do Kubernetes e aos exclusivos do OpenShift está prontamente disponível.
+
+#### PKS
+ Além do bloco que inicia um cluster PKS, não há interface do usuário. Os usuários podem optar por instalar o painel Kubernetes de código aberto. Nenhuma outra opção é fornecida.
+
