@@ -441,6 +441,178 @@ Restaurar um cluster PKS requer restaurar todo o cluster PCF, o PKS Manager e os
  A Pivotal não oferece orientação sobre o fortalecimento das implantações do PKS. Uma solicitação de suporte de março de 2019 relata que o kube-bench não funciona com clusters PKS, deixando os usuários a encontrar sua própria solução.
 
 ### Políticas RBAC
+ * Rancher: **++++**
+ * OpenShift: **--++**
+ * PKS: **---+**
+
+#### Rancher
+ O Rancher expõe todos os RBAC do Kubernetes e, em seguida, permite a configuração e manutenção das políticas do RBAC no nível global em nossa interface do usuário. Existem políticas para os níveis Global, Cluster e Projeto e, além dos modelos que Rancher fornece, os usuários podem criar um número infinito de modelos para definir novas funções. Os modelos de usuário podem herdar dos modelos existentes para criar uma hierarquia de permissões que são facilmente mantidas.
+
+#### OpenShift
+ O OpenShift renomeia os objetos de política do Kubernetes para clusterPolicy e localPolicy e usa um formato de configuração proprietário que remove a compatibilidade com outras implantações do Kubernetes. O gerenciamento das políticas é feito através do comando oc. Nenhum gerenciamento está disponível através da interface do usuário.
+
+#### PKS
+ O PKS opera através do sistema Kubernetes RBAC, mas como o esquema de autenticação existe fora do PKS, os administradores do operador e do cluster devem executar etapas adicionais e executar componentes de integração adicionais para ativar a autenticação do usuário e do grupo.
+
+## Ferramentas e serviços compartilhados
+### Catálogo de aplicativos
+ * Rancher: **-+++**
+ * OpenShift: **++++**
+ * PKS: **--++**
+
+#### Rancher
+ O Catálogo de aplicativos da Rancher estende o Helm para fornecer aos usuários um processo de instalação facilmente baseado em formulário para aplicativos. Ele se integra a qualquer repositório Helm externo, oferecendo aos usuários os meios para instalar aplicativos de qualquer sistema. O Tiller, o componente interno de Helm, é frequentemente citado como um risco de segurança, porque geralmente é implantado com privilégios de nível de administrador em um cluster. O catálogo de aplicativos do Rancher não requer Tiller e, como tal, é uma implementação mais segura do Helm.
+
+#### OpenShift
+ O OpenShift se integra ao Operator Hub da Red Hat, uma lista com curadoria de aplicativos que atendem aos requisitos de inclusão da Red Hat. A Red Hat incentiva os usuários a converter gráficos Helm em Operators. Muitos gráficos Helm não serão executados nativamente devido à incompatibilidade com as permissões padrão no OCP4. Mesmo se implantado manualmente, o Helm não é suportado pelo OCP4 e pode invalidar o suporte ao cluster.
+
+#### PKS
+ O PKS suporta a instalação e uso padrão do Helm.
+
+### Provisão com Terraform / Ansible / Outros
+ * Rancher: **-+++**
+ * OpenShift: **--++**
+ * PKS: **-+++**
+
+#### Rancher
+ O Rancher mantém o provedor Terraform, que permite aos usuários implantar e gerenciar o Rancher usando os princípios de IaC. Embora não esteja oficialmente integrada a outras soluções, a API aberta do Rancher e o uso de contêineres do Docker para RKE facilitam a integração com soluções como Ansible, Puppet, Chef, grupos de dimensionamento automático da AWS, init na nuvem ou outras estratégias de provisionamento.
+
+#### OpenShift
+ O OpenShift usa o Terraform para sua instalação, mas o faz agrupando o instalador do Terraform e todos os scripts no binário do instalador. Eles não são visíveis ao usuário ou estão disponíveis para inclusão em um fluxo de trabalho IaaS corporativo.
+
+#### PKS
+ O Pivotal usa o Terraform como o método suportado para instalar o PCF e o PKS. Repositórios do Github existem para os principais provedores de nuvem, OpenStack e vSphere.
+
+### Recursos de CI/CD
+ * Rancher: **++++**
+ * OpenShift: **-+++**
+ * PKS: **--++**
+
+#### Rancher
+ O Rancher se integra a qualquer sistema de CI / CD que funcione com o Kubernetes. Se um usuário ainda não possui um sistema de CI / CD, ele pode usar o sistema Pipeline incorporado ao Rancher para começar a usar os fluxos de trabalho de CI / CD. O Rancher Pipelines é baseado no Jenkins e se conecta a repositórios do GitHub, Gitlab e Bitbucket.
+
+#### OpenShift
+ O OpenShift funcionará com qualquer sistema de CI / CD que funcione com o Kubernetes. Além disso, com a versão 4.1, a Red Hat lançou uma prévia do OpenShift Pipelines, baseado no Tekton.
+
+#### PKS
+ O PKS funcionará com qualquer sistema de CI / CD que funcione com o Kubernetes.
+
+### Monitoramento avançado
+ * Rancher: **++++**
+ * OpenShift: **++++**
+ * PKS: **---+**
+
+#### Rancher
+ O Rancher é enviado com o monitoramento básico ativado por padrão. Os administradores de cluster podem ativar o monitoramento avançado com um único clique na interface do usuário do Rancher. Isso implanta o Prometheus e o Grafana nos níveis do projeto e do cluster e instala painéis pré-configurados que permitem visibilidade imediata nas operações do cluster. Os usuários podem acessar o Grafana e visualizar as métricas dos recursos aos quais têm acesso. Eles também podem anotar suas cargas de trabalho para que o Prometheus comece a extrair métricas personalizadas deles.
+
+#### OpenShift
+ O OpenShift é enviado com o Prometheus e o Grafana ativados por padrão, com painéis Grafana pré-configurados. Esta instalação está disponível apenas para monitorar componentes OpenShift. Os usuários devem instalar sua própria solução para monitorar as cargas de trabalho do usuário.
+
+#### PKS
+ O PKS não possui nenhum monitoramento ou visualização instalado por padrão. Os usuários podem acessar manualmente os dados de telemetria e uso do banco de dados PKS no ambiente PCF. O BOSH monitora os nós do PKS e destruirá e recriará os nós que julgar não responderem. A única solução suportada para monitoramento adicional do PKS requer uma cópia licenciada do VMware Wavefront.
+
+### Alertas e Notificações
+ * Rancher: **++++**
+ * OpenShift: **--++**
+ * PKS: **---+**
+
+#### Rancher
+ O monitoramento básico padrão e o monitoramento avançado opcional configuram alertas para componentes críticos do cluster. Os usuários precisam apenas criar destinos de notificação. O Rancher suporta o envio de alertas para Slack, PagerDuty, WeChat, email ou qualquer destino de webhook. Os notificadores podem ser configurados nos níveis de cluster e projeto, permitindo a delegação de responsabilidades por eventos de aplicativos para as equipes responsáveis.
+
+#### OpenShift
+ Os destinos de notificação do OpenShift exigem configuração manual do AlertManager e proíbem expressamente o desvio de um pequeno subconjunto da funcionalidade do AlertManager.
+
+#### PKS
+ O PKS suporta o uso de Sinks para interceptar e encaminhar dados métricos para um coletor externo. O coletor externo deve ser instalado e mantido externo ao PKS.
+
+### Envio de log externo
+ * Rancher: **-+++**
+ * OpenShift: **-+++**
+ * PKS: **--++**
+
+#### Rancher
+ O Rancher é enviado com conectores para Elasticsearch, Fluentd, Splunk, Kafka e syslog.
+
+#### OpenShift
+ O OpenShift pode implantar uma pilha EFK (Elasticsearch, Fluentd, Kibana) dentro do cluster e usá-la para log.
+
+#### PKS
+ O PKS suporta a configuração de Sinks, que interceptam e encaminham dados de log para um destino syslog ou webhook.
+
+### Suporte para contêiners no Windows
+ * Rancher: **-+++**
+ * OpenShift: **----**
+ * PKS: **--++**
+
+#### Rancher
+ O Rancher suporta nós worker do Windows começando com o Rancher 2.3 e o Kubernetes 1.14. Os nós worker do Windows e Linux podem existir juntos (os nós do Linux executam o control plane, etcd e ingress) no mesmo cluster do Kubernetes e o Rancher implementará a carga de trabalho apropriada no nó apropriado.
+
+#### OpenShift
+ O OpenShift (OCP4) não contém suporte de produção para o uso de servidores Windows em clusters do Kubernetes ou para a implantação de contêineres do Windows no Kubernetes.
+
+#### PKS
+ O PKS contém suporte beta para contêineres do Windows no vSphere. Os clusters PKS que usam contêineres do Windows devem conter apenas nós worker do Windows.
+
+### Suporte integrado ao Service Mesh
+ * Rancher: **-+++**
+ * OpenShift: **-+++**
+ * PKS: **---+**
+
+#### Rancher 
+ O Rancher contém a ativação com um clique do Istio upstream com visualização no painel do Rancher por meio do Kiali. Os usuários podem usar imediatamente os benefícios da malha de serviço nos clusters implantados no Rancher ou, se desejarem usar uma alternativa diferente do Istio, poderão implantá-lo no catálogo de aplicativos.
+
+#### OpenShift
+ O OpenShift instala uma versão do Istio modificada pelo Red Hat para funcionar no OpenShift. Embora seja funcionalmente semelhante ao Istio, não se moverá tão rapidamente quanto a Istio de liberação de cadência a montante.
+
+#### PKS
+ O PKS não contém suporte nativo para nenhuma malha de serviço. A funcionalidade de malha de serviço está disponível no VMware NSX-T e CloudFoundry, mas elas são fundamentalmente diferentes da funcionalidade que uma malha de serviço fornece para implantações do Kubernetes.
+
+### SLA corporativo
+ * Rancher: **++++**
+ * OpenShift: **-+++**
+ * PKS: **-+++**
+
+#### Rancher
+ O Rancher Labs fornece uma assinatura corporativa que abrange o Rancher, Docker, Kubernetes e todos os softwares nativos da nuvem que o Rancher inclui. Ele também inclui garantia e indenização de IP e está disponível em pacotes configuráveis para suporte em horário comercial ou 24x7. A assinatura do Rancher é avaliada por nó, independentemente do número de núcleos.
+
+#### OpenShift
+ A Red Hat fornece suporte para o OpenShift e a pilha de software da Red Hat. Muitos dos componentes do OpenShift não podem ser modificados ou usados fora dos parâmetros ditados pelo Red Hat sem invalidar o suporte. O modelo de suporte da Red Hat é precificado por núcleo virtual, tornando cada atualização do ambiente do cliente um aumento no custo de suporte.
+
+#### PKS
+ O PKS, como parte do PCF, é a versão suportada dos produtos de código aberto do Cloud Foundry. As versões do Pivotal, bem como as versões do VMware, incluem suporte para operação em determinadas plataformas. Em alguns casos, o suporte está incluído no custo da assinatura (como no VMware Cloud PKS) ou em outros casos, o suporte é licenciado externamente.
+
+### Comunidade
+ * Rancher: **++++**
+ * OpenShift: **-+++**
+ * PKS: **++++**
+
+#### Rancher
+ O Rancher possui uma comunidade próspera de usuários e colaboradores em todos os seus produtos e projetos. Com mais de 100 milhões de downloads e +25.000 implantações, é a solução de código aberto mais popular para implantar e gerenciar clusters Kubernetes.
+
+#### OpenShift
+ A Red Hat possui uma grande comunidade de usuários de código aberto em toda a sua linha de produtos. Embora o OpenShift Container Platform seja uma oferta comercial, os componentes da solução existem em um formulário de código aberto. A dificuldade em implantar e manter componentes díspares pode levar as pessoas a comprar a versão comercial do OCP4 ou usar soluções alternativas.
+
+#### PKS
+ A origem de código aberto do PKS é o Cloud Foundry Container Service. O Cloud Foundry foi criado originalmente pela VMware e agora é mantido pela Pivotal. O Cloud Foundry possui uma sequência de código aberto grande e robusta, além da certificação da plataforma, todos os recursos do Pivotal PKS estão disponíveis no Serviço de Contêiner do Cloud Foundry.
+
+# Sobre o autor
+ A Rancher Labs é a empresa por trás dos seguintes produtos de código aberto:
+ 
+ * Rancher - a plataforma de gerenciamento Kubernetes de nível empresarial mais popular do mundo;
+ * RKE - um instalador Kubernetes simples e extremamente rápido que funciona em qualquer lugar;
+ * K3s - uma distribuição Kubernetes leve, de nível de produção, criada para sistemas embarcados e para o Edge;
+ * Rio - um MicroPaaS que oferece uma experiência de desenvolvimento totalmente integrada do pipeline às operações sem assumir o controle do cluster.
+
+ Juntos, esses produtos ajudam as equipes de ITOps e DevOps a enfrentar os desafios operacionais e de segurança do gerenciamento de clusters Kubernetes certificados em qualquer infraestrutura. Eles também fornecem aos desenvolvedores uma pilha integrada de ferramentas para criar e executar cargas de trabalho em contêiners em escala.
+
+ Para saber mais sobre o Rancher Labs, visite <https://rancher.com/>
+
+# Glosário
+ ## Operações consistentes de cluster
+ * Facilidade de instalação, configuração e manutenção
+   * Uma plataforma de gerenciamento Kubernetes deve ser fácil e rápida de implementar. A implantação deve ser medida em minutos, em vez de horas ou, em alguns casos, dias.
+ 
+
 
 
 
