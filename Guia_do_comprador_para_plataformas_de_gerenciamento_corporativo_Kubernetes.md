@@ -651,7 +651,7 @@ Restaurar um cluster PKS requer restaurar todo o cluster PCF, o PKS Manager e os
  * Suporte de armazenamento
    * A integração com o armazenamento de nível corporativo é um componente essencial da execução de clusters Kubernetes na produção. As empresas normalmente desejam que a implantação do Kubernetes se integre às soluções de armazenamento já implementadas (NetApp, EMC etc.) ou que desejam integrar-se a uma tecnologia de armazenamento nativa do contêiner, como Longhorn, OpenEBS, StorageOS ou Portworx.
 
- * Suporte Arn
+ * Suporte Arm
    * O suporte a chipsets Arm é particularmente importante ao executar clusters Kubernetes em ambientes com recursos limitados, como dispositivos IoT ou na rede edge.
 
  * Suporte Airgap
