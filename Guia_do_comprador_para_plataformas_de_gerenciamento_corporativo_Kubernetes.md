@@ -612,15 +612,97 @@ Restaurar um cluster PKS requer restaurar todo o cluster PCF, o PKS Manager e os
  * Facilidade de instalação, configuração e manutenção
    * Uma plataforma de gerenciamento Kubernetes deve ser fácil e rápida de implementar. A implantação deve ser medida em minutos, em vez de horas ou, em alguns casos, dias.
  
+ * UI Intuitivo
+   * Uma interface de usuário intuitiva e refinada deve permitir operações que abranjam vários clusters em execução em diferentes regiões, datacenters e provedores de nuvem.
+ 
+ * Multi-cloud
+   * O suporte a ambientes de nuvem populares como AWS, Azure e GCP minimiza os riscos comerciais e técnicos associados ao bloqueio em um único provedor de nuvem.
+ 
+ * Multi-cluster
+   * Para executar o Kubernetes em produção sem o bloqueio do fornecedor, você precisa gerenciar vários clusters do Kubernetes usando a mesma experiência de usuário unificada, local ou em qualquer ambiente em nuvem.
 
+ * Suporte gerenciado ao Kubernetes
+   * Há muitos bons motivos para os usuários favorecerem a velocidade de implantação, a resiliência e as ferramentas de provedores de serviços gerenciados como AKS, EKS e GKE. Uma plataforma de gerenciamento Kubernetes deve oferecer aos usuários a escolha do ambiente de implantação sem favorecer nenhum fornecedor.
 
+ * Bare Metal, Cloud, OpenStack & vSphere
+   * Para dar suporte às implantações híbridas do Kubernetes, a plataforma de gerenciamento Kubernetes escolhida também deve oferecer suporte a virtualização comum, nuvem privada e ambientes bare metal.
 
+ * Importar clusters existentes
+   * A capacidade de importar clusters Kubernetes existentes é particularmente importante para aqueles que iniciaram sua jornada no Kubernetes usando o Kubernetes Vanilla ou um serviço Kubernetes gerenciado, mas desejam consolidar seu gerenciamento com uma única interface.
 
+ * Alta disponibilidade
+   * As plataformas de gerenciamento Kubernetes devem facilitar a implantação de um cluster Kubernetes com control plane de controle empilhado ou o uso de um cluster etcd externo sem a necessidade de implantar ferramentas adicionais, como o kops.
 
+ * Load balancing
+   * O Kubernetes carrega automaticamente solicitações de balanceamento para serviços de aplicativos dentro de um cluster Kubernetes. No entanto, alguns serviços precisam ser expostos externamente para consumo por clientes externos. O Kubernetes não fornece uma solução de balanceamento de carga pronta para uso para esse tipo de serviço. Uma plataforma de gerenciamento Kubernetes deve incluir uma solução robusta de balanceamento de carga externa ou integrar-se perfeitamente aos balanceadores de carga comerciais existentes.
 
+ * Auditoria centralizada
+   * Os usuários devem poder ver o registro cronológico das chamadas que foram feitas para o servidor da API Kubernetes. As entradas do log de auditoria do Kubernetes são úteis para investigar solicitações de API suspeitas, coletar estatísticas ou criar alertas de monitoramento para chamadas de API indesejadas.
 
+ * Provisionamento de autoatendimento
+   * Os desenvolvedores devem ter acesso de autoatendimento a um ou mais clusters Kubernetes com níveis adequados de isolamento, para que apenas membros com os privilégios certos possam acessar cargas de trabalho de produção.
 
+ * Gerenciamento privado de registro e imagem
+   * Um registro de imagem de contêiner é um serviço como o Docker Hub que armazena imagens de contêiner. Um registro privado permite que você compartilhe suas imagens de base personalizadas dentro da sua organização, mantendo uma fonte de verdade consistente, privada e centralizada para os elementos básicos de sua arquitetura.
 
+ * Atualizações de cluster e gerenciamento de versão
+   * Novas versões do Kubernetes estão disponíveis a cada 3 meses. Uma plataforma de gerenciamento Kubernetes deve suportar atualizações contínuas de clusters, de modo que o cluster e a API do cluster estejam sempre disponíveis, mesmo enquanto o cluster estiver sendo atualizado. Além disso, fornecerá a capacidade de reverter para a versão estável anterior em caso de falha.
+
+ * Suporte de armazenamento
+   * A integração com o armazenamento de nível corporativo é um componente essencial da execução de clusters Kubernetes na produção. As empresas normalmente desejam que a implantação do Kubernetes se integre às soluções de armazenamento já implementadas (NetApp, EMC etc.) ou que desejam integrar-se a uma tecnologia de armazenamento nativa do contêiner, como Longhorn, OpenEBS, StorageOS ou Portworx.
+
+ * Suporte Arn
+   * O suporte a chipsets Arm é particularmente importante ao executar clusters Kubernetes em ambientes com recursos limitados, como dispositivos IoT ou na rede edge.
+
+ * Suporte Airgap
+   * Os clusters Kubernetes usados para aplicativos internos podem ser instalados e operados em ambientes com airgapped. Um cluster airgap não tem acesso à Internet de saída e, portanto, não pode extrair as imagens do aplicativo de um registro público do Docker.
+
+ * Backup e restauração do Etcd
+   * Para alguns, a idéia de backups para aplicativos sem estado é contra-intuitiva. Mas o estado ainda é necessário para restaurar um nó principal com falha e é especialmente importante se você executar um cluster com apenas um único master.
+
+## Política de segurança e gerenciamento de usuários
+ * Active Directory e suporte LDAP
+   * Fora da caixa, a autenticação do Kubernetes não é muito fácil de usar para os usuários finais. Uma plataforma de gerenciamento Kubernetes deve integrar-se perfeitamente ao Microsoft Active Directory e outros serviços LDAP comuns para oferecer a experiência de autenticação mais fácil aos usuários finais.
+
+ * Políticas de segurança de pod e rede
+   * Uma política de segurança de rede é uma especificação de como os recursos do Kubernetes podem se comunicar entre si e com outros pontos de extremidade da rede. Uma Política de Segurança de Pod (PSP) define regras de segurança com as quais os Pods devem estar em conformidade para serem executados no cluster.
+
+ * Adesão configurável às referências de segurança
+   * Os benchmarks do Center for Internet Security (CIS) podem ser usados por administradores de sistema, profissionais de segurança e auditoria e outras funções de TI para estabelecer e manter uma linha de base de configuração segura para o Kubernetes.
+
+ * Políticas RBAC
+   * As políticas de controle de acesso baseado em funções (RBAC) são vitais para o gerenciamento correto do seu cluster, pois permitem especificar quais tipos de ações são permitidos, dependendo do usuário e sua função na organização. As políticas RBAC comuns incluem a proteção do cluster concedendo operações privilegiadas (acessando segredos, por exemplo) apenas para usuários administrativos; forçando a autenticação do usuário no seu cluster; e limitar a criação de recursos (como pods, volumes persistentes, implantações) a namespaces específicos ou fazer com que um usuário veja apenas recursos em seu namespace autorizado.
+
+## Ferramentas e serviços compartilhados
+ * Catálogo de aplicações
+   * O catálogo de aplicativos fornece implantação fácil com um clique para um conjunto de aplicativos pré-empacotados que são executados dentro do Kubernetes. Ele também fornece aos desenvolvedores um veículo para criar e publicar seus próprios aplicativos, para que outras pessoas em sua equipe ou organização possam implantá-los de maneira rápida e confiável. O catálogo de aplicativos permite que as organizações padronizem um conjunto de receitas ou blueprints de implantação de aplicativos, evitando a expansão da configuração e instalações não autorizadas.
+
+ * Provisão com Terraform / Ansible / Outros
+   * Terraform e Ansible são ferramentas populares de infraestrutura como código de software que permitem aos usuários definir, provisionar e gerenciar uma infraestrutura de datacenter usando uma linguagem de configuração de alto nível, como YAML ou JSON. O suporte a essas ferramentas significa que as equipes podem trabalhar com sua plataforma de gerenciamento Kubernetes da mesma maneira que o restante de sua infraestrutura.
+
+ * Capacidades de CI / CD
+   * Uma das cargas de trabalho mais críticas executadas pelos desenvolvedores é o Continuous Integration e / ou Continuous Delivery. Um pipeline robusto de CI / CD é fundamental para garantir o desenvolvimento ágil e a entrega rápida de novos lançamentos de software para os clientes.
+
+ * Monitoramento avançado
+   * Um cluster Kubernetes de produção sempre deve ser monitorado para detectar problemas que podem afetar a disponibilidade do cluster e do aplicativo para os usuários. Uma plataforma de gerenciamento Kubernetes deve fornecer esse recurso imediatamente, com monitoramento avançado disponível por meio de integrações com soluções de monitoramento de cloudnative e de código aberto, como Prometheus e Grafana.
+
+ * Alertas e Notificações
+   * Notificações e alertas são os principais pilares da observabilidade no DevOps. Embora o monitoramento e o registro proporcionem uma maneira de obter informações sobre o estado de um cluster Kubernetes, notificações e alertas são usados para informar aos operadores sobre eventos potencialmente problemáticos quando eles ocorrem.
+
+ * Envio de log externo
+   * As cargas de trabalho em seus clusters gravam informações nos logs, mas sem um ponto central de agregação, a análise dos dados do log é mais desafiadora. Um cluster eficaz oferecerá suporte ao envio de logs para sistemas externos como Splunk, Logstash ou Fluentd. Esses sistemas permitem uma visão mais ampla de vários fluxos de dados e podem detectar mais facilmente anomalias na imagem maior.
+
+ * Suporte de contêiner do Windows
+   * Com inúmeras cargas de trabalho em execução em várias versões, o Windows continua sendo um dos sistemas operacionais mais populares nos datacenters. Se o requisito é criar e desmontar rapidamente ambientes de desenvolvimento ou teste ou elevar e transferir aplicativos herdados para a nuvem, o suporte a contêineres do Windows na plataforma de gerenciamento Kubernetes é um requisito para qualquer empresa que use o Windows na produção.
+
+ * Service Mesh
+   * O Service Mesh adiciona tolerância a falhas, implantações de canários, testes A / B, monitoramento e métricas, rastreamento e observabilidade e autenticação e autorização ao Kubernetes. Isso elimina a necessidade de os desenvolvedores criarem códigos personalizados para ativar esses recursos. Os desenvolvedores podem se concentrar em sua lógica de negócios, e todos os aplicativos se beneficiam de uma cadeia de ferramentas padrão para serviços de rede complexos.
+
+ * SLA Corporativo
+   * À medida que mais organizações executam seus aplicativos de negócios no Kubernetes, as equipes de operações de TI devem garantir que possam oferecer suporte aos SLAs (acordos de nível de serviço) exigidos pela empresa. Para ajudar os clientes a entender isso, cada fornecedor fornece conhecimento técnico e informações 24/7/365 por meio de alguma forma de assinatura anualizada. Acessibilidade e confiança são variáveis-chave na avaliação de ofertas concorrentes.
+
+ * Comunidade
+   * Frequentemente usadas como clima de inovação e maturidade da plataforma, as tecnologias de código aberto mais bem-sucedidas são prontamente adotadas por suas respectivas comunidades e amplamente implementadas.
 
 
 
