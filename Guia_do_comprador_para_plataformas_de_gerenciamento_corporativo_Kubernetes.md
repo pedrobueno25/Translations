@@ -1,7 +1,7 @@
 # Guia do comprador para plataformas de gerenciamento corporativo Kubernetes
 
 # Sumário Executivo
-> De acordo com a 451 Research, 76% das empresas padronizarão o Kubernetes nos próximos 3 anos, pois promete um conjunto consistente de recursos em qualquer infraestrutura - do datacenter à nuvem e até a borda - “Kubernetes and Beyond – Effective Implementation of Cloud Native Software in the Enterprise” por Jay Lyman, Analista Principal 451 Research.
+> De acordo com a 451 Research, 76% das empresas padronizarão o Kubernetes nos próximos 3 anos, pois promete um conjunto consistente de recursos em qualquer infraestrutura - do datacenter à nuvem e até edge - “Kubernetes and Beyond – Effective Implementation of Cloud Native Software in the Enterprise” por Jay Lyman, Analista Principal 451 Research.
 
  Ao unificar suas operações de TI com o Kubernetes, as empresas obtêm benefícios importantes, como maior confiabilidade, segurança aprimorada e maior eficiência com automação padronizada.
 
@@ -33,7 +33,7 @@
 
  Ao simplificar e automatizar as operações de cluster, as Plataformas de Gerenciamento Kubernetes buscam melhorar a eficiência do DevOps.
 
- Rancher:
+ **Rancher**:
  * Facilidade de instalação, configuração e manutenção: **++++**
  * Intuitive UI: **++++**
  * Multi-cloud: **++++**
@@ -52,7 +52,7 @@
  * Airgap Support: **++++**
  * Backup e restauração do Etcd: **++++**
 
-OpenShift:
+**OpenShift**:
  * Facilidade de instalação, configuração e manutenção: **--++**
  * Intuitive UI: **++++**
  * Multi-cloud: **-+++**
@@ -71,7 +71,7 @@ OpenShift:
  * Airgap Support: **----**
  * Backup e restauração do Etcd: **--++**
 
-PKS:
+**PKS**:
  * Facilidade de instalação, configuração e manutenção: **---+**
  * Intuitive UI: **--++**
  * Multi-cloud: **-+++**
@@ -651,7 +651,7 @@ Restaurar um cluster PKS requer restaurar todo o cluster PCF, o PKS Manager e os
  * Suporte de armazenamento
    * A integração com o armazenamento de nível corporativo é um componente essencial da execução de clusters Kubernetes na produção. As empresas normalmente desejam que a implantação do Kubernetes se integre às soluções de armazenamento já implementadas (NetApp, EMC etc.) ou que desejam integrar-se a uma tecnologia de armazenamento nativa do contêiner, como Longhorn, OpenEBS, StorageOS ou Portworx.
 
- * Suporte Arn
+ * Suporte Arm
    * O suporte a chipsets Arm é particularmente importante ao executar clusters Kubernetes em ambientes com recursos limitados, como dispositivos IoT ou na rede edge.
 
  * Suporte Airgap
