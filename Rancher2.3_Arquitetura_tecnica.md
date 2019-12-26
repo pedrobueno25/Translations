@@ -11,6 +11,8 @@
 # Rancher 2.3: Construído em Kubernetes
  * O Rancher 2.3 é uma plataforma completa de gerenciamento de contêineres construída no Kubernetes.
  * O Rancher 2.3 contém três componentes principais - uma **distribuição Kubernetes certificada**, uma **plataforma de gerenciamento Kubernetes** e **gerenciamento de aplicativos**
+ 
+ ![Image 1](/images/image6.png)
 
 ## Certificados Kubernetes com Rancher Kubernetes Engine (RKE)
  O RKE é um instalador Kubernetes extremamente simples e extremamente rápido que funciona em qualquer lugar. O RKE é particularmente útil para levantar clusters Kubernetes em clusters VMware, servidores bare metal e instâncias de VM em nuvens que ainda não oferecem suporte ao serviço Kubernetes. Além disso, muitas pessoas usam o RKE em provedores de nuvem que já oferecem suporte aos serviços Kubernetes, para que tenham uma implementação consistente do Kubernetes em todos os lugares. No Rancher 2.3, os clusters podem ser provisionados nas arquiteturas Linux x86_64 e Arm64, bem como nos sistemas Windows 19.03.
@@ -33,6 +35,8 @@
  
  O GKE normalmente exige que seus usuários se autentiquem usando suas credenciais do Google. Com o Rancher 2.3, um desenvolvedor corporativo pode entrar em um cluster GKE usando as credenciais do Active Directory gerenciadas pela TI corporativa.
  
+  ![Image 2](/images/image7.png)
+ 
  O Rancher 2.3 se baseia na autenticação centralizada com políticas de controle de acesso centralizadas definidas em nível global e aplicadas aos clusters sob gerenciamento. Aproveitando os recursos nativos de RBAC do Kubernetes, o Rancher 2.3 permite que os administradores de TI configurem e apliquem políticas de controle de acesso e segurança em vários clusters do Kubernetes.
 
  O Rancher 2.3 apresenta um novo conceito chamado Projetos. Um projeto é um ou mais namespaces do Kubernetes e suas políticas associadas, como regras RBAC, cota de recursos etc. Os usuários podem criar projetos e atribuir outros usuários ou grupos aos projetos que ele possui. Os usuários podem receber diferentes funções em vários projetos. Por exemplo, um desenvolvedor pode receber privilégios completos de criação / leitura / atualização / exclusão em um projeto dev, mas apenas acesso somente leitura nos projetos de preparação e produção. Os usuários podem apenas criar, modificar ou excluir espaços para nome nos projetos dos quais são membros. Isso aprimora muito a funcionalidade de autoatendimento multitenant do Kubernetes.
@@ -51,6 +55,8 @@
 
 ## Arquitetura de alto nível
  O software Rancher 2.3 consiste em duas partes. Os componentes do servidor Rancher gerenciam toda a implantação do Rancher. O Rancher também implanta componentes do agente nos clusters e nós do Kubernetes.
+ 
+  ![Image 3](/images/image8.png)
 
 # Componentes do servidor Rancher
  Nesta seção, descrevemos as funcionalidades de cada componente do servidor Rancher.

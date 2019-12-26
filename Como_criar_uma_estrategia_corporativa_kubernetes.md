@@ -18,6 +18,8 @@
  Existe até um ecossistema emergente crescendo em torno de Kubernetes à medida que se expande nas empresas. As equipes de DevOps podem aproveitar as ferramentas incríveis que estão surgindo do movimento do software de código aberto, como novos bancos de dados, ferramentas de big data, inteligência artificial, análise de dados, pesquisa e muitos outros.
 
  Nos últimos dois anos, o Kubernetes mudou do ambiente de desenvolvimento e teste para o ambiente de produção em muitas empresas. De acordo com a pesquisa global do CNCF de 2018 no mercado de gerenciamento de contêineres, 40% dos entrevistados estão executando o Kubernetes em produção. O CNCF recebeu respostas de 2.400 desenvolvedores e gerentes de operações de TI, além de funcionários de empresas (com mais de 5.000 funcionários) em todo o mundo, principalmente da América do Norte e Europa.
+ 
+ ![Image 1](/images/image9.png)
 
  Quanto às ferramentas de gerenciamento de contêineres, o Kubernetes continua sendo o líder, com 83% dos entrevistados, um aumento de 77% em pesquisas anteriores do CNCF. O Elastic Container Service (ECS) da Amazon ficou um segundo distante, com apenas 24% dos entrevistados dizendo que estava em uso. E Docker e Shell Scripts subiram atrás, com 21% e 20% respectivamente, de acordo com o CNCF.
 
@@ -194,6 +196,8 @@
  A Illumina também conseguiu usar a funcionalidade de Rancher para impulsionar novos objetivos no aprendizado profundo: algo que, por sua vez, aprimorará todas as operações da empresa. Usando o Kubernetes como camada de orquestração, as equipes implantaram seus dois primeiros ambientes de aprendizado de máquina de produção com o Rancher, onde os gerentes podem agendar contra GPUs para obter a máxima eficiência.
 
  O departamento de automação também usa modelos de contêiner orquestrados pelo Rancher para hospedar microsserviços persistentes relacionados a mensagens HTML, gerenciamento de identidades e criação de service desk.
+
+![Image 2](/images/image10.png)
 
 ## Como Rancher e Kubernetes podem funcionar para qualquer organização
 
