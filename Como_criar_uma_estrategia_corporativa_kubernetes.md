@@ -123,12 +123,93 @@
 
 ## Avaliando plataformas de gerenciamento de contêineres e entregando o Kubernetes como serviço
 
- 
+ Até o momento, falamos sobre a construção de uma estratégia corporativa do Kubernetes com base no entendimento de como suas equipes de DevOps usarão o Kubernetes nos próximos anos e em orientar sua plataforma para dar suporte a essas equipes. Falamos sobre a importância de manter a flexibilidade e, ao mesmo tempo, fornecer controles e gerenciamento centralizados. É nesse ponto que as equipes começam a procurar opções técnicas para gerenciar contêineres em toda a organização.
 
+ Empresas de analistas como Gartner e Forrester descrevem essa classe de software como Container Management Platform (CMP). É usado para descrever ferramentas como RedHat OpenShift, Docker Enterprise e Rancher que fornecem uma plataforma para gerenciar os contêineres de uma organização. Neste documento, não tentaremos comparar essas ofertas diferentes, mas queremos destacar alguns recursos que você deve considerar ao determinar como eles podem ajudá-lo a implementar sua estratégia do Kubernetes.
 
+### Distribuição Kubernetes, provisionamento de cluster e gerenciamento do ciclo de vida
 
+ A maioria dos produtos neste espaço inclui uma distribuição padrão do Kubernetes e deve poder provisionar um cluster e dar suporte à sua equipe na atualização para a versão mais recente do Kubernetes. Alguns também incluem monitoramento integrado, backup e recuperação etcd, provisionamento e dimensionamento automático de infraestrutura. Se você estiver usando uma distribuição Kubernetes fornecida pelo fornecedor do CMP, é importante considerar se essa distribuição é consistente com o Kubernetes upstream ou modificada de alguma forma que possa tornar lento o suporte aos recursos mais recentes desenvolvidos na comunidade.
 
+### Gerenciamento de Kubernetes com vários clusters
 
+ Se você espera gerenciar vários clusters Kubernetes no momento do lançamento ou no futuro, vale a pena revisar como um CMP aborda o gerenciamento de vários clusters. Veja como o CMP gerencia vários clusters e se ele pode gerenciar diferentes tipos de clusters, incluindo serviços Kubernetes baseados em nuvem. A plataforma gerencia apenas os clusters implementados ou é possível importar os clusters existentes? Mais importante, o que significa gerenciamento desses diferentes clusters? Que tipo de ação você pode executar nesses aplicativos diferentes? 
+
+ A visibilidade é ótima, mas você também desejará implementar políticas e controles, automatizar operações, fornecer catálogos de aplicativos e possivelmente oferecer outros serviços compartilhados. Se o gerenciamento de vários clusters é essencial para sua estratégia, certifique-se de entender o que significa e como as diferentes plataformas CMP o implementam.
+
+### Gerenciamento de usuários e administração delegada
+
+ O principal objetivo de qualquer plataforma Kubernetes é fornecer um serviço compartilhado aos seus usuários, facilitando a inovação deles. Sua avaliação dessas ferramentas deve ser orientada para entender como você gerenciará um grande número de usuários e a experiência que pode oferecer a eles. A compreensão da jornada do usuário começa com a definição de como os usuários acessarão o Kubernetes. Verifique se a sua plataforma suporta o logon único existente, como LDAP ou Microsoft Active Directory. Você deseja autorizar indivíduos e equipes a acessar clusters ou espaços de nomes específicos e definir uma ampla variedade de funções que atendem aos seus requisitos de negócios.
+
+ Depois de garantir que sua plataforma suporta os recursos de controle de acesso necessários, considere quais recursos administrativos você pode delegar aos líderes de equipe, proprietários de cluster e proprietários de projetos. A plataforma permite que você dedique recursos a equipes específicas? Você pode definir facilmente cotas de recursos e gerenciar a utilização de plataformas compartilhadas? As equipes podem colaborar em projetos e compartilhar catálogos de aplicativos? No entanto, você decide entregar o Kubernetes para essas equipes diferentes, verifique se está fornecendo acesso direto à API do Kubernetes e ao kubectl, pois isso garantirá que eles possam acessar todos os recursos do Kubernetes.
+
+### Gerenciamento de Políticas
+
+ Criar uma camada central de gerenciamento de políticas é como garantir a conformidade e os controles adequados em todas as implementações do Kubernetes em sua organização. A maioria das CMPs terá planos de controle de administrador que permitem que suas equipes definam políticas e as apliquem a todas as equipes que usam o Kubernetes e a todos os clusters da organização.
+
+ Por exemplo, a Política de segurança do pod do Kubernetes é um recurso em nível de cluster que controla aspectos sensíveis à segurança da especificação do pod. Os objetos Política de Segurança do Pod definem um conjunto de condições com as quais um pod deve ser executado para ser aceito no sistema, além de padrões para os campos relacionados. Eles permitem que um administrador controle funções como execução de contêineres privilegiados, uso de namespaces de host e uso de redes e portas de host, para citar alguns. O gerenciamento de políticas também pode abordar a varredura de imagem de contêiner, a configuração de cluster e até a implantação de aplicativos. Por exemplo, se sua organização decide implementar um produto de segurança de contêiner como Twistlock, Aqua ou NeuVector, o gerenciamento de políticas deve garantir que esses aplicativos sejam instalados automaticamente em qualquer cluster Kubernetes novo ou importado.
+
+### Experiência do usuário e toda a pilha nativa da nuvem
+
+ O Kubernetes é um mecanismo poderoso, com um rico ecossistema de ferramentas ao seu redor. A maioria das plataformas CMP fornecerá uma experiência completa ao usuário em torno do Kubernetes, que incorpora ferramentas do ecossistema e fornece uma interface do usuário para simplificar o gerenciamento da carga de trabalho. Ao avaliar essas plataformas, considere como elas abordaram a integração de tecnologias adjacentes, como mecanismo de contêiner, rede de sobreposição, ferramentas de automação, registros de contêineres, malha de serviço, monitoramento, log, CI / CD e catálogos de aplicativos. Essas ferramentas estão fortemente ou vagamente acopladas à plataforma e como isso afeta a flexibilidade que suas equipes terão para implementar novas abordagens à medida que se desenvolvem?
+
+ Um dos maiores riscos de um CMP é que ele coloca muita ênfase em soluções integradas e facilidade de uso e acaba limitando a flexibilidade. O Kubernetes está muito bem arquitetado para a integração plug-andplay com a maior parte de seu ecossistema; não perca essa flexibilidade. Por exemplo, se uma plataforma oferece um CI / CD integrado, verifique se suas equipes que já possuem ferramentas de CI / CD também podem conectar facilmente seus processos existentes.
+
+### Auditoria e Segurança no Kubernetes
+
+ Ao considerar as ferramentas CMP, é essencial que você colabore com seus especialistas em segurança e garanta que as ferramentas suportem seus requisitos de segurança mais amplos. A maioria das ofertas de CMP aborda segurança e auditoria em nível global e pode fornecer uma boa compreensão de sua abordagem. No nível da plataforma, alguns dos recursos mais importantes a serem considerados incluem controle de acesso baseado em funções, políticas de segurança centralizadas, varredura de imagem de contêiner e a capacidade de corrigir rapidamente o Kubernetes e o tempo de execução do contêiner (Docker, ContainerD ou Cri-o). Algumas plataformas chegarão ao ponto de avaliar seus clusters em relação aos benchmarks CIS (Center for Internet Security) do [Kubernetes Security](https://www.cisecurity.org/benchmark/kubernetes/)
+
+ Além da segurança no nível da plataforma, existe um rico ecossistema de organizações focadas especificamente na segurança de contêineres, como Aqua Security, Twistlock, StackRox e NeuVector. Essas ferramentas oferecem diferentes recursos de segurança, além dos recursos do Kubernetes ou de um CMP, e vale a pena avaliar como parte de sua implementação mais ampla do Kubernetes.
+
+### Open Source, SaaS, e Suporte
+
+ Se você decidir implementar um CMP, uma das principais decisões que precisará tomar é como operar a plataforma. Atualmente, a maioria das ferramentas CMP são fornecidas como software, e muitas, como Rancher, Mesosphere DC / OS e OpenShift, estão disponíveis gratuitamente como software de código aberto. Por isso, deve ser fácil para sua equipe implantar e avaliar várias tecnologias nesse espaço. Todas as ferramentas de código aberto oferecem alguma opção para obter suporte de nível empresarial. Ao examinar essas opções, considere se esse suporte exige que você mude da versão de código-fonte aberto para uma edição corporativa que pode adicionar recursos, mas também pode dificultar mais tarde retornar à versão de código-fonte aberto, se você não quer pagar mais. Ao avaliar o suporte oferecido por essas ferramentas CMP, considere quanto da pilha é suportada. Você está obtendo suporte para o Kubernetes, e quanto ao tempo de execução do contêiner, malha de serviço, implementação de rede e outros componentes da pilha nativa da nuvem, como Istio, Prometheus e Helm? O fornecedor fornece análise de causa raiz em todos esses elementos da pilha?
+
+ Se você não deseja operar uma dessas plataformas, alguns fornecedores oferecem versões gerenciadas ou baseadas em nuvem desses CMPs. Se você decidir mudar para um CMP hospedado, considere quanta flexibilidade você terá no futuro para removê-lo conforme suas necessidades mudam. É uma implementação compartilhada do CMP ou é dedicada à sua organização? Você criará muitas políticas, modelos, práticas recomendadas e integrações com um CMP, portanto, verifique se há alguma maneira de extrair essa lógica e movê-la para uma plataforma diferente se seus requisitos mudarem no futuro.
+
+## Alguns pensamentos finais
+
+ Adotar uma nova tecnologia em uma grande organização nunca é fácil. Como tecnólogos, ficamos entusiasmados quando surgem novas abordagens que têm o potencial de criar novas e surpreendentes experiências para nossos clientes. Muitos de nós que trabalhamos com tecnologia há 20 anos, vemos o Kubernetes e a conteinerização como a terceira fase de um processo iniciado com o surgimento da visualização e expandido com a computação em nuvem. Ao criar uma estratégia de contêiner corporativo, não deixe de aprender com os sucessos e falhas do passado de sua organização na adoção dessas outras tecnologias. Se você tiver membros da equipe que ajudaram a implantar o VMware ou AWS em sua organização, incorpore-os a este projeto e veja quais insights eles podem fornecer específicos para sua organização.
+
+ Falamos anteriormente sobre como determinar quem deve liderar qualquer estratégia de toda a empresa em torno de contêineres. À medida que você desenvolve e implementa sua estratégia do Kubernetes, preste atenção especial às equipes que já estão executando aplicativos no Kubernetes. Cada uma dessas equipes deve estar representada na sua equipe de estratégia e deve estar validando que sua abordagem para gerenciar o Kubernetes não introduzirá restrições que os impediriam de adotá-lo. O foco nos primeiros adotantes o ajudará a evitar a simplificação excessiva e a fornecer uma plataforma que se desvia da adoção principal do Kubernetes.
+
+ Ao iniciar essa jornada, preste atenção especial ao aprendizado de outras organizações que estão adotando o Kubernetes. Todos os anos, as apresentações do KubeCon são gravadas e postadas no YouTube. Você pode encontrar muitos conselhos do mundo real de equipes que implementaram o Kubernetes em um projeto ou em toda a empresa. A melhor dessas apresentações se concentrará não apenas em como a empresa está usando o Kubernetes, mas também nos desafios que enfrentaram ao adotá-lo e no impacto que teve sobre seus negócios.
+
+# Apêndice A - Estudo de Caso
+
+## Como o líder de ciências biológicas Illumina implementou uma estratégia corporativa da Kubernetes
+
+ A Illumina, uma empresa de ciências da vida e líder de mercado em sequenciamento genético, implantou o Rancher com o objetivo de permitir que as equipes criassem contêineres em qualquer infraestrutura, mantendo uma política estrita de segurança e TI. A pesquisa inovadora que sai dos escritórios da Illumina direciona trabalhos sobre doenças, reações a medicamentos, agricultura e muito mais. A plataforma Kubernetes implantada com o Rancher agora suporta todas as facetas dessa pesquisa. Na Illumina, grandes quantidades de dados são uma parte crítica da equação. A empresa estava ansiosa por encontrar maneiras de mover dados através de um pipeline e realizar grandes quantidades de análises, além de gerenciar todas as tarefas administrativas que acompanham a administração de uma organização em escala.
+
+### Um quebra-cabeça complexo com muitas partes
+
+ Uma das maiores complicações enfrentadas pela Illumina é o ambiente em que as bases de código compiladas sob encomenda não eram acessíveis ou totalmente organizadas para uso da empresa e dos funcionários. A implementação de contêineres foi um desafio: ao tentar migrar processos para um novo sistema de contêineres, a empresa descobriu que o uso de um modelo de contêiner exigia bastante pesquisa e horas de equipe.
+
+ Outro componente foi a eficiência do gerenciamento: 10 pessoas tiveram que suportar 300 desenvolvedores e petabytes de dados. Os líderes da Illumina se concentraram em tentar aprimorar a automação e criar um ambiente melhor para executar todas as suas aplicações. A arquitetura geral precisava suportar contêineres executados em sistemas de fornecedores como AWS, bem como implantações bare-metal no local.
+
+### Conectando todas as peças com o Rancher e o Kubernetes
+
+ A empresa escolheu o Rancher como sua plataforma Kubernetes para acelerar seus processos de DevOps. A equipe da Illumina trabalhou para construir um sistema baseado em Rancher que pode funcionar em diferentes ambientes. Por exemplo, eles usaram a AWS onde fazia sentido e colocaram outros componentes em sistemas internos ou hardware local para obter melhor controle e eficiência de custos.
+
+ A Illumina também conseguiu usar a funcionalidade de Rancher para impulsionar novos objetivos no aprendizado profundo: algo que, por sua vez, aprimorará todas as operações da empresa. Usando o Kubernetes como camada de orquestração, as equipes implantaram seus dois primeiros ambientes de aprendizado de máquina de produção com o Rancher, onde os gerentes podem agendar contra GPUs para obter a máxima eficiência.
+
+ O departamento de automação também usa modelos de contêiner orquestrados pelo Rancher para hospedar microsserviços persistentes relacionados a mensagens HTML, gerenciamento de identidades e criação de service desk.
+
+## Como Rancher e Kubernetes podem funcionar para qualquer organização
+
+ Como o estudo de caso da Illumina demonstra, o Kubernetes pode ser implantado em quase qualquer ambiente e é capaz de lidar com a presença de vários tipos de hardware e software na empresa, diferentes tecnologias de rede ou até mesmo desejos concorrentes entre as equipes de TI e DevOps. No entanto, ele só funciona com eficiência máxima quando gerenciado adequadamente por meio de uma plataforma de orquestração como o Rancher.
+
+ Como padrão crescente para a orquestração de contêineres na nuvem, o Kubernetes fará parte das estratégias empresariais de muitas organizações. A chave para criar uma estratégia Kubernetes eficiente da empresa é entender como um serviço Kubernetes pode ser e construí-lo de forma a capturar os benefícios exclusivos da descentralização e centralização ao mesmo tempo. Kubernetes e plataformas de orquestração podem ajudá-lo a equilibrar esses modelos concorrentes.
+
+ Você deseja o alto grau de autonomia oferecido pela descentralização, onde as equipes constroem o que precisam, otimizadas para a inovação. Por outro lado, você também precisa dos benefícios associados à centralização, como automatizar tarefas comuns, integrar sistemas, facilitar a movimentação entre produtos e um foco sério na segurança consistente. O Kubernetes como serviço, também conhecido como Contêiner como serviço ou plataformas de gerenciamento de contêineres, será parte integrante dessa estratégia.
+
+ O foco muda para o gerenciamento de uma estrutura em torno do Kubernetes. Muitas organizações estão nessa jornada de maneiras diferentes, mas nem todos significam a mesma coisa quando falam sobre isso. Kubernetes como serviço significa que as equipes de TI e DevOps que usam o Kubernetes estão em uma plataforma comum, o que lhes oferece os recursos de configuração e operacionais necessários para executar exatamente as cargas de trabalho de que precisam.
+
+ Ao mesmo tempo, a TI pode gerenciar funções comuns e fornecer integrações importantes, como gerenciamento de usuário ativo e plugins. Os plug-ins oferecem uma maneira flexível de aprovar registros e definir políticas que determinam o que é permitido executar em clusters. Usando esse modelo, a política e a segurança podem ser mantidas, mesmo que os desenvolvedores tenham a liberdade de que precisam para inovar.
+
+Encontrar o equilíbrio certo é o principal desafio, e implementar uma plataforma de orquestração como o Rancher ao lado do Kubernetes pode ajudar você a chegar lá. Plataformas como o Rancher podem fornecer todos os benefícios do Kubernetes, além de reduzir a complexidade. O Rancher oferece recursos de gerenciamento inigualáveis, independentemente de quão complexa ou única a plataforma que uma empresa está suportando.
+
+ Assista à série [Master Class Kubernetes](https://www.youtube.com/watch?v=djTFhT33cz0&list=PLfAoTEAPazb7FKqC5lutOa4sa-6FIiNtg%29) sobre a construção de uma estratégia Kubernetes corporativa para aprender mais sobre este tópico.
 
 
 
