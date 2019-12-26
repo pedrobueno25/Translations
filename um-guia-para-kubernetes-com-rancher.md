@@ -17,19 +17,13 @@
 
 ## Quem é Rancher Labs
 A Rancher Labs foi fundada em 2014 para fornecer as ferramentas necessárias para tirar o máximo proveito e vantagem da tecnologia de contêineres. Nós acreditamos que o Kubernetes permitirá uma nova era da portabilidade de aplicações. Nosso principal produto, Rancher, é uma plataforma completa de gerenciamento de contêineres que fornece um fácil acesso para trabalhar com todos os tipos de instalações Kubernetes.
- 	                                       ![alt text](/images/image1.png)
+ 	                                       ![Image 1](/images/image1.png)
 					       
- Para garantir o sucesso do Kubernetes, o Rancher inclui um rico conjunto de recursos. Sabendo que você precisará deles mais cedo ou mais tarde, incorporamos em nossa plataforma os recursos mais solicitados por milhares de clientes. A incorporação desses recursos economiza tempo e dinheiro, evitando as centenas de horas necessárias 
- para configurar, integrar, solucionar problemas e manter a multiplicidade	      		![alt text](/images/image2.png)
- de projetos open source necessários para fornecer 
- funcionalidade comparável.
+ Para garantir o sucesso do Kubernetes, o Rancher inclui um rico conjunto de recursos. Sabendo que você precisará deles mais cedo ou mais tarde, incorporamos em nossa plataforma os recursos mais solicitados por milhares de clientes. A incorporação desses recursos economiza tempo e dinheiro, evitando as centenas de horas necessárias para configurar, integrar, solucionar problemas e manter a multiplicidade de projetos open source necessários para fornecer funcionalidade comparável.
 
- Os recursos amigáveis da empresa do Rancher incluem um catálogo de 
- aplicativos embutido, monitoramento e registro integrados e RBAC superior. 
- A disponibilização desde o início permite um ótimo 
- começo à medida que você dimensiona sua implantação.
+ Os recursos amigáveis da empresa do Rancher incluem um catálogo de aplicativos embutido, monitoramento e registro integrados e RBAC superior. A disponibilização desde o início permite um ótimo começo à medida que você dimensiona sua implantação.
  
-
+![Image 2](/images/image2.png)
 
 
 ## Parceria com Rancher na sua jornada Kubernetes
@@ -79,6 +73,7 @@ A Rancher Labs foi fundada em 2014 para fornecer as ferramentas necessárias par
  Para ajudar você a entender melhor o valor do Rancher, examinaremos alguns cenários que podem estar relacionados aos desafios existentes que você e sua equipe estão enfrentando:
 
 ### Cenário 1: Implantando o mesmo aplicativo em diferentes nuvens públicas:
+[Image 3](\images\image3.png)
  O Rancher pode ser usado para criar clusters Kubernetes em diferentes zonas de disponibilidade em um único provedor, por exemplo, AWS ou em diferentes nuvens, por exemplo, AWS e Azure. Por exemplo, EU General Data Protection Regulation (GDPR) os dados de clientes europeus podem precisar residir na EU, enquanto os dados do resto do mundo podem residir nos centros de dados dos EUA. Usando o Rancher, o mesmo aplicativo pode ser implantado em diferentes regiões como a EU e os EUA, usando as mesmas políticas  identidade e funções de acesso, garantindo consistência em todas instanciações. E quando o aplicativo é atualizado, o Rancher pode apenas fornecer com facilidade a nova versão em todas as regiões. Esse mesmo recurso também pode ser útil para recuperação de desastres, exibindo aplicativos em diferentes zonas de disponibilidade, se um desastre natural ou falha técnica derrubar o aplicativo nos locais originais.
 
 ### Cenário 2: Implantando partes diferentes de aplicativos em nuvens diferentes:
