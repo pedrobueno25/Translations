@@ -11,6 +11,8 @@
 # Rancher 2.3: Construído em Kubernetes
  * O Rancher 2.3 é uma plataforma completa de gerenciamento de contêineres construída no Kubernetes.
  * O Rancher 2.3 contém três componentes principais - uma **distribuição Kubernetes certificada**, uma **plataforma de gerenciamento Kubernetes** e **gerenciamento de aplicativos**
+ 
+ ![Image 1](/images/image6.png)
 
 ## Certificados Kubernetes com Rancher Kubernetes Engine (RKE)
  O RKE é um instalador Kubernetes extremamente simples e extremamente rápido que funciona em qualquer lugar. O RKE é particularmente útil para levantar clusters Kubernetes em clusters VMware, servidores bare metal e instâncias de VM em nuvens que ainda não oferecem suporte ao serviço Kubernetes. Além disso, muitas pessoas usam o RKE em provedores de nuvem que já oferecem suporte aos serviços Kubernetes, para que tenham uma implementação consistente do Kubernetes em todos os lugares. No Rancher 2.3, os clusters podem ser provisionados nas arquiteturas Linux x86_64 e Arm64, bem como nos sistemas Windows 19.03.
