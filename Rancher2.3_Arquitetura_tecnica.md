@@ -56,7 +56,7 @@
 ## Arquitetura de alto nível
  O software Rancher 2.3 consiste em duas partes. Os componentes do servidor Rancher gerenciam toda a implantação do Rancher. O Rancher também implanta componentes do agente nos clusters e nós do Kubernetes.
  
-  ![Image 3](/images/image7.png)
+  ![Image 3](/images/image8.png)
 
 # Componentes do servidor Rancher
  Nesta seção, descrevemos as funcionalidades de cada componente do servidor Rancher.
