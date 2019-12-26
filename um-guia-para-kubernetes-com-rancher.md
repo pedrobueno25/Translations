@@ -22,7 +22,7 @@
 
  Os recursos amigáveis da empresa do Rancher incluem um catálogo de aplicativos embutido, monitoramento e registro integrados e RBAC superior. A disponibilização desde o início permite um ótimo começo à medida que você dimensiona sua implantação.
  
- ![alt text](\imagens\image1.png)
+ ![alt text](\imagens\image1)
 
 
 ## Parceria com Rancher na sua jornada Kubernetes
