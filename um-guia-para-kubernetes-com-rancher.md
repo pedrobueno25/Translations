@@ -16,8 +16,13 @@
 
 
 ## Quem é Rancher Labs
- A Rancher Labs foi fundada em 2014 para fornecer as ferramentas necessárias para tirar o máximo proveito e vantagem da tecnologia de contêineres. Nós acreditamos que o Kubernetes permitirá uma nova era da portabilidade de aplicações. Nosso principal produto, Rancher, é uma plataforma completa de gerenciamento de contêineres que fornece um fácil acesso para trabalhar com todos os tipos de instalações Kubernetes.
- ![Imagem 1](/images/image1.png)	
+ A Rancher Labs foi fundada em 2014 para fornecer as ferramentas necessárias       ![Imagem 1](/images/image1.png)
+ para tirar o máximo proveito e vantagem da tecnologia de contêineres.
+ Nós acreditamos que o Kubernetes permitirá uma nova era da portabilidade 
+ de aplicações. Nosso principal produto, Rancher, é uma plataforma
+ completa de gerenciamento de contêineres que fornece um fácil 
+ acesso para trabalhar com todos os tipos de instalações Kubernetes.
+ 	
 
  Para garantir o sucesso do Kubernetes, o Rancher inclui um rico conjunto de recursos. Sabendo que você precisará deles mais cedo ou mais tarde, incorporamos em nossa plataforma os recursos mais solicitados por milhares de clientes. A incorporação desses recursos economiza tempo e dinheiro, evitando as centenas de horas necessárias para configurar, integrar, solucionar problemas e manter a multiplicidade de projetos open source necessários para fornecer funcionalidade comparável.
 
