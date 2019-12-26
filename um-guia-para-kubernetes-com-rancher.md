@@ -21,6 +21,8 @@
  Para garantir o sucesso do Kubernetes, o Rancher inclui um rico conjunto de recursos. Sabendo que você precisará deles mais cedo ou mais tarde, incorporamos em nossa plataforma os recursos mais solicitados por milhares de clientes. A incorporação desses recursos economiza tempo e dinheiro, evitando as centenas de horas necessárias para configurar, integrar, solucionar problemas e manter a multiplicidade de projetos open source necessários para fornecer funcionalidade comparável.
 
  Os recursos amigáveis da empresa do Rancher incluem um catálogo de aplicativos embutido, monitoramento e registro integrados e RBAC superior. A disponibilização desde o início permite um ótimo começo à medida que você dimensiona sua implantação.
+ 
+ ![alt text](C:\Users\ferna\Desktop\Imagens_Traduções\image1.png)		![alt text](C:\Users\ferna\Desktop\Imagens_Traduções\image2.png)
 
 
 ## Parceria com Rancher na sua jornada Kubernetes
